@@ -1,0 +1,66 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/28/2019 10:41:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ACWIEK01"
+  DTS:CreatorName="AzureAD\ArkadiuszĆwiek"
+  DTS:DTSID="{D8A68F9D-80B9-48E8-AC03-50ECF8BB4818}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.98"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Load_wwoHistoricalWeather"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{806AF55E-810B-49CE-85D0-BAA8E424DFD8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{59D50A85-D2A1-42CF-8D87-68855A9EAC5F}"
+      DTS:ObjectName="APIKey">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">afcded77a7e4446198c120431192802</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{76BD9666-F645-42F9-AABC-8B9F0373EF38}"
+      DTS:ObjectName="City">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Warsaw</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E4249AEC-D85D-45EB-8CF2-3DFD41045AA3}"
+      DTS:ObjectName="DateToLoad">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">2018-01-01</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{2C67BE6E-AE0A-4E6C-A79B-660911463833}"
+      DTS:ObjectName="ObjectName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">wwoHistoricalWeather</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

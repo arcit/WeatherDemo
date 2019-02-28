@@ -57,5 +57,30 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dm\" />
+    <Folder Include="dm\Views\" />
+    <Folder Include="config\" />
+    <Folder Include="config\Views\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Security\" />
+    <Folder Include="config\Tables\" />
+    <Folder Include="config\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Views\Time.sql" />
+    <Build Include="dm\Views\DimDate.sql" />
+    <Build Include="config\Views\etlCities.sql" />
+    <Build Include="dbo\Functions\GetNums.sql" />
+    <Build Include="dbo\Stored Procedures\GetDatesByMonth.sql" />
+    <Build Include="Security\ods.sql" />
+    <Build Include="Security\dm.sql" />
+    <Build Include="Security\core.sql" />
+    <Build Include="Security\config.sql" />
+    <Build Include="config\Tables\EtlObjectLoadParams.sql" />
+    <Build Include="config\Stored Procedures\UpdateLastLoadDate.sql" />
+    <Build Include="config\Stored Procedures\GetLastLoadDate.sql" />
   </ItemGroup>
 </Project>
