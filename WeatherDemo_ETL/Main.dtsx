@@ -1,0 +1,658 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2019 1:15:32 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ACWIEK01"
+  DTS:CreatorName="AzureAD\ArkadiuszĆwiek"
+  DTS:DTSID="{AA5EE482-89F6-447D-A56F-34C8ED39CEFA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.98"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Main"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{3593CCF7-9141-4EA5-B9FA-BDA405B2BBD7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4C68BC25-972A-4A20-85B2-6470EDDF2E4F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CitiesToLoad">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{37007967-C021-4C06-B191-B18A2FA5E26A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;EXEC [config].[UpdateLastLoadDate] 'wwoHistoricalWeather' , '&quot; + LEFT((DT_STR,30,1252)GETDATE(),10) + &quot;'&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Query_UpdateLastLoadDate">
+      <DTS:VariableValue
+        DTS:DataType="8">EXEC [config].[UpdateLastLoadDate] 'wwoHistoricalWeather' , '2019-03-01'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E35B2BEC-C2AE-40A5-A477-157CDC93A724}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="wwoHistoricalWeather_ApiKey">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C0BF3A15-3AFA-42AF-8D99-17E8F6226001}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="wwoHistoricalWeather_CityToLoad">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{59905DF8-C3B1-423F-B55E-5BCB1FF7CB11}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="wwoHistoricalWeather_DatesToLoad">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A5E46C67-9A96-4A3A-9FF5-CB43AAA77D3F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="wwoHistoricalWeather_DateToLoad">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load ODS"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{A62A6C83-D6E0-4BC4-A3FD-7F870D8E802E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load ODS">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load ODS\GetCitiesToLoad"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6c2ed45d-be8f-4901-861c-42434ffa25e9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="GetCitiesToLoad"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7C197763-39DB-410A-BFD0-7A5790AD2C64}"
+              SQLTask:SqlStatementSource="EXEC [config].[GetCitiesToLoad]"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::CitiesToLoad" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{06F6B1C0-1E42-4F9E-9D83-75E3F14A5FA5}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load ODS wwoHistoricalWeather">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date"
+              DTS:CreationName="STOCK:FOREACHLOOP"
+              DTS:Description="Foreach Loop Container"
+              DTS:DTSID="{C1617AA4-3AA7-4FBD-8C23-10675F3A52F8}"
+              DTS:ExecutableType="STOCK:FOREACHLOOP"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Foreach Date">
+              <DTS:ForEachEnumerator
+                DTS:CreationName="Microsoft.ForEachADOEnumerator"
+                DTS:DTSID="{54A87797-0C08-423D-9086-06446EDBCC1D}"
+                DTS:ObjectName="{54A87797-0C08-423D-9086-06446EDBCC1D}">
+                <DTS:ObjectData>
+                  <FEEADO
+                    EnumType="EnumerateRowsInFirstTable"
+                    VarName="User::wwoHistoricalWeather_DatesToLoad" />
+                </DTS:ObjectData>
+              </DTS:ForEachEnumerator>
+              <DTS:Variables />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date\Foreach City"
+                  DTS:CreationName="STOCK:FOREACHLOOP"
+                  DTS:Description="Foreach Loop Container"
+                  DTS:DTSID="{1FC123B4-D157-49C9-BE2A-0EB566B42272}"
+                  DTS:ExecutableType="STOCK:FOREACHLOOP"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="Foreach City">
+                  <DTS:ForEachEnumerator
+                    DTS:CreationName="Microsoft.ForEachADOEnumerator"
+                    DTS:DTSID="{75A0DF65-7EC2-4FE0-ABB7-5E7B13AD0684}"
+                    DTS:ObjectName="{75A0DF65-7EC2-4FE0-ABB7-5E7B13AD0684}">
+                    <DTS:ObjectData>
+                      <FEEADO
+                        EnumType="EnumerateRowsInFirstTable"
+                        VarName="User::CitiesToLoad" />
+                    </DTS:ObjectData>
+                  </DTS:ForEachEnumerator>
+                  <DTS:Variables />
+                  <DTS:Executables>
+                    <DTS:Executable
+                      DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date\Foreach City\Load_wwoHistoricalWeather"
+                      DTS:CreationName="Microsoft.ExecutePackageTask"
+                      DTS:Description="Execute Package Task"
+                      DTS:DTSID="{46693014-14AB-4BFD-B470-90A98732B6A5}"
+                      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+                      DTS:LocaleID="-1"
+                      DTS:ObjectName="Load_wwoHistoricalWeather"
+                      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                      <DTS:Variables />
+                      <DTS:ObjectData>
+                        <ExecutePackageTask>
+                          <UseProjectReference>True</UseProjectReference>
+                          <PackageName>Load_wwoHistoricalWeather.dtsx</PackageName>
+                          <ParameterAssignment>
+                            <ParameterName>APIKey</ParameterName>
+                            <BindedVariableOrParameterName>User::wwoHistoricalWeather_ApiKey</BindedVariableOrParameterName>
+                          </ParameterAssignment>
+                          <ParameterAssignment>
+                            <ParameterName>City</ParameterName>
+                            <BindedVariableOrParameterName>User::wwoHistoricalWeather_CityToLoad</BindedVariableOrParameterName>
+                          </ParameterAssignment>
+                          <ParameterAssignment>
+                            <ParameterName>DateToLoad</ParameterName>
+                            <BindedVariableOrParameterName>User::wwoHistoricalWeather_DateToLoad</BindedVariableOrParameterName>
+                          </ParameterAssignment>
+                        </ExecutePackageTask>
+                      </DTS:ObjectData>
+                    </DTS:Executable>
+                  </DTS:Executables>
+                  <DTS:ForEachVariableMappings>
+                    <DTS:ForEachVariableMapping
+                      DTS:CreationName=""
+                      DTS:DTSID="{35F0AF2C-03C7-40C6-A122-70A0E2A26DDF}"
+                      DTS:ObjectName="{35F0AF2C-03C7-40C6-A122-70A0E2A26DDF}"
+                      DTS:ValueIndex="0"
+                      DTS:VariableName="User::wwoHistoricalWeather_CityToLoad" />
+                  </DTS:ForEachVariableMappings>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:ForEachVariableMappings>
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{51E152C5-6BDB-43C2-976F-D89B0373C9E2}"
+                  DTS:ObjectName="{51E152C5-6BDB-43C2-976F-D89B0373C9E2}"
+                  DTS:ValueIndex="0"
+                  DTS:VariableName="User::wwoHistoricalWeather_DateToLoad" />
+              </DTS:ForEachVariableMappings>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather\Get wwoHistoricalWeather_APIKey"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{1896f10b-2448-4e20-ac11-1ad01abe792b}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Get wwoHistoricalWeather_APIKey"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{7C197763-39DB-410A-BFD0-7A5790AD2C64}"
+                  SQLTask:SqlStatementSource="EXEC [config].[GetAPIKey] 'wwoHistoricalWeather'"
+                  SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="0"
+                    SQLTask:DtsVariableName="User::wwoHistoricalWeather_ApiKey" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather\Load ODS"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{3bfd6f63-91a4-4e83-9f34-dc3918bba879}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Load ODS"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{7C197763-39DB-410A-BFD0-7A5790AD2C64}"
+                  SQLTask:SqlStatementSource="EXEC [ods].[Load_wwoHistoricalWeather]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather\Truncate Staging"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{03E58619-67B9-4510-9830-C5218425FBAD}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Truncate Staging"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{7C197763-39DB-410A-BFD0-7A5790AD2C64}"
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [ods].[wwoHistoricalWeather_staging]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather\Update Last Load Date"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{770DEC76-072F-40F4-9195-2A510EA14A1B}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Update Last Load Date"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{7C197763-39DB-410A-BFD0-7A5790AD2C64}"
+                  SQLTask:SqlStmtSourceType="Variable"
+                  SQLTask:SqlStatementSource="User::Query_UpdateLastLoadDate" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather\wwoHistoricalWeather_DatesToLoad"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{81B4406E-1ED0-42E8-A91B-2563D449B4F3}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="wwoHistoricalWeather_DatesToLoad"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="2">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{7C197763-39DB-410A-BFD0-7A5790AD2C64}"
+                  SQLTask:SqlStatementSource="EXEC [config].[GetDatesToLoad] 'wwoHistoricalWeather'"
+                  SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="0"
+                    SQLTask:DtsVariableName="User::wwoHistoricalWeather_DatesToLoad" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{4D082CC7-7946-4A1B-83BF-E503B627F45B}"
+              DTS:From="Package\Load ODS\Load ODS wwoHistoricalWeather\Get wwoHistoricalWeather_APIKey"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{4768841A-7272-43BE-8AAB-44629C1DCD4C}"
+              DTS:From="Package\Load ODS\Load ODS wwoHistoricalWeather\wwoHistoricalWeather_DatesToLoad"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 2]"
+              DTS:CreationName=""
+              DTS:DTSID="{FB8B295A-E0A1-4F59-9308-433A355A3F1D}"
+              DTS:From="Package\Load ODS\Load ODS wwoHistoricalWeather\Truncate Staging"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 2"
+              DTS:To="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 3]"
+              DTS:CreationName=""
+              DTS:DTSID="{5E0C4B22-90CC-46E8-A285-438B8CEF831D}"
+              DTS:From="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 3"
+              DTS:To="Package\Load ODS\Load ODS wwoHistoricalWeather\Load ODS" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 4]"
+              DTS:CreationName=""
+              DTS:DTSID="{8168A2BC-9DDA-41D1-A9E3-7442FFFF9FA9}"
+              DTS:From="Package\Load ODS\Load ODS wwoHistoricalWeather\Load ODS"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 4"
+              DTS:To="Package\Load ODS\Load ODS wwoHistoricalWeather\Update Last Load Date" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load ODS.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{D94BE783-DFF8-492E-AC85-3CB4CE0D285F}"
+          DTS:From="Package\Load ODS\GetCitiesToLoad"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Load ODS\Load ODS wwoHistoricalWeather" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Load ODS\GetCitiesToLoad"
+          TopLeft="29,9" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date\Foreach City\Load_wwoHistoricalWeather"
+          TopLeft="41,18" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="254,113"
+          Size="254,156"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date\Foreach City"
+          TopLeft="48,24" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="307,214"
+          Size="307,257"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Foreach Date"
+          TopLeft="131.5,134.5" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Get wwoHistoricalWeather_APIKey"
+          TopLeft="441,22" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Truncate Staging"
+          TopLeft="270,23" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Update Last Load Date"
+          TopLeft="194,536" />
+        <NodeLayout
+          Size="269,42"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\wwoHistoricalWeather_DatesToLoad"
+          TopLeft="5.5,22.5" />
+        <EdgeLayout
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint]"
+          TopLeft="562,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-202.25,70.5"
+              Start="0,0"
+              End="-202.25,63">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5952637244349" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.5952637244349"
+                    Point2="0,46.5952637244349"
+                    Point3="-4,46.5952637244349" />
+                  <mssgle:LineSegment
+                    End="-198.25,46.5952637244349" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-198.25,46.5952637244349"
+                    Point2="-202.25,46.5952637244349"
+                    Point3="-202.25,50.5952637244349" />
+                  <mssgle:LineSegment
+                    End="-202.25,63" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 1]"
+          TopLeft="140,64.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.25,70"
+              Start="0,0"
+              End="70.25,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.264800861141" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.264800861141"
+                    Point2="0,46.264800861141"
+                    Point3="4,46.264800861141" />
+                  <mssgle:LineSegment
+                    End="66.25,46.264800861141" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.25,46.264800861141"
+                    Point2="70.25,46.264800861141"
+                    Point3="70.25,50.264800861141" />
+                  <mssgle:LineSegment
+                    End="70.25,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 2]"
+          TopLeft="349.5,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-64.5,69.5"
+              Start="0,0"
+              End="-64.5,62">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.75"
+                    Point2="0,34.75"
+                    Point3="-4,34.75" />
+                  <mssgle:LineSegment
+                    End="-60.5,34.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-60.5,34.75"
+                    Point2="-64.5,34.75"
+                    Point3="-64.5,38.75" />
+                  <mssgle:LineSegment
+                    End="-64.5,62" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Load ODS"
+          TopLeft="211.5,444" />
+        <EdgeLayout
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 3]"
+          TopLeft="285,391.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.5,52.5"
+              Start="0,0"
+              End="-10.5,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.25"
+                    Point2="0,26.25"
+                    Point3="-4,26.25" />
+                  <mssgle:LineSegment
+                    End="-6.5,26.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.5,26.25"
+                    Point2="-10.5,26.25"
+                    Point3="-10.5,30.25" />
+                  <mssgle:LineSegment
+                    End="-10.5,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 4]"
+          TopLeft="274.5,486">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,50"
+              Start="0,0"
+              End="12.5,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="8.5,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5,25"
+                    Point2="12.5,25"
+                    Point3="12.5,29" />
+                  <mssgle:LineSegment
+                    End="12.5,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="688,644"
+          Size="688,687"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather"
+          TopLeft="406,28" />
+        <EdgeLayout
+          Id="Package\Load ODS.PrecedenceConstraints[Constraint]"
+          TopLeft="184,30">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="222,341.5"
+              Start="0,0"
+              End="214.5,341.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="107,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107,0"
+                    Point2="111,0"
+                    Point3="111,4" />
+                  <mssgle:LineSegment
+                    End="111,337.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111,337.5"
+                    Point2="111,341.5"
+                    Point3="115,341.5" />
+                  <mssgle:LineSegment
+                    End="214.5,341.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1099,770"
+          Size="1099,813"
+          Id="Package\Load ODS"
+          TopLeft="268,57" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

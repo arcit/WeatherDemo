@@ -68,13 +68,16 @@
     <Folder Include="Security\" />
     <Folder Include="config\Tables\" />
     <Folder Include="config\Stored Procedures\" />
+    <Folder Include="ods\" />
+    <Folder Include="ods\Tables\" />
+    <Folder Include="_SchemaCompare" />
+    <Folder Include="ods\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Views\Time.sql" />
     <Build Include="dm\Views\DimDate.sql" />
     <Build Include="config\Views\etlCities.sql" />
     <Build Include="dbo\Functions\GetNums.sql" />
-    <Build Include="dbo\Stored Procedures\GetDatesByMonth.sql" />
     <Build Include="Security\ods.sql" />
     <Build Include="Security\dm.sql" />
     <Build Include="Security\core.sql" />
@@ -82,5 +85,16 @@
     <Build Include="config\Tables\EtlObjectLoadParams.sql" />
     <Build Include="config\Stored Procedures\UpdateLastLoadDate.sql" />
     <Build Include="config\Stored Procedures\GetLastLoadDate.sql" />
+    <Build Include="ods\Tables\wwoHistoricalWeather.sql" />
+    <Build Include="config\Stored Procedures\GetDatesToLoad.sql" />
+    <Build Include="config\Stored Procedures\GetCitiesToLoad.sql" />
+    <Build Include="config\Stored Procedures\GetAPIKey.sql" />
+    <Build Include="ods\Tables\wwoHistoricalWeather_staging.sql" />
+    <Build Include="ods\StoredProcedures\Load_wwoHistoricalWeather.sql" />
+    <Build Include="dm\Views\FactHistoricalWeather.sql" />
+    <Build Include="dm\Views\DimLocation.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_SchemaCompare\PROD.scmp" />
   </ItemGroup>
 </Project>
