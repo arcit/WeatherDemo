@@ -25,6 +25,8 @@ Remarks - ETL/Integration:
 * ETL processes are fully restartable - there is no need to clean up when process fails in specific place.
 * JSON is loaded into SQL Server and is parsed using JSON support feature for SQL Server 2016+
 * ETL configuration/runtime parameters are stored inside database
+* When needed some days may be reloaded by updating parameter in config.ETLObjectLoadParameters:
+![Parameters Example](https://raw.githubusercontent.com/arcit/WeatherDemo/master/Images/LoadingParameters.png)
 
 Remarks - DB:
 * Most of the logic is in views as this simplifies maintanance and improves flexibility
