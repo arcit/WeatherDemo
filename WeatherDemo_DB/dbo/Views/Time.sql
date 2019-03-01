@@ -5,9 +5,10 @@ SELECT
   ,YEAR(d) AS [Year]
   ,MONTH(d) AS [Month]
   ,DAY(d) AS [Day]
-  ,DATEPART(ISO_WEEK,d) [Week]
+  ,DATEPART(WEEK,d) [Week]
   ,DATEPART(W,d) AS [Weekday]
   ,DATENAME(WEEKDAY,d) [WeekdayName]
+  ,'Week '+ CAST(DATEPART(WEEK,d)as varchar(50)) + ' (' + RIGHT(CONVERT(varchar(10),(DATEADD(WEEK, 0, DATEADD(DAY, 1-DATEPART(WEEKDAY, d), DATEDIFF(dd, 0, d))) +1),120),5) + ' - ' + RIGHT(CONVERT(varchar(10),(DATEADD(WEEK, 1, DATEADD(DAY, 0-DATEPART(WEEKDAY, d), DATEDIFF(dd, 0, d)))+1),120),5) + ')' AS WeekDescrption
   ,DATEPART(QUARTER,d) AS [Quarter]
   ,'Q' + DATENAME(QUARTER,d) AS [QuarterName]
   ,DATENAME(MONTH,d) AS [MonthName]

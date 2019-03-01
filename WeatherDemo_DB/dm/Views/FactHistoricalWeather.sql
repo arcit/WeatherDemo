@@ -17,6 +17,6 @@ SELECT
 ,	CAST(JSON_VALUE(a.value,'$.weatherDesc[0].value')	AS varchar(50))			AS WeatherDescription
 ,	CAST(JSON_VALUE(a.value,'$.humidity') AS decimal(4,1))							AS Humidity
 ,	CAST(JSON_VALUE(a.value,'$.pressure')	AS decimal(6,1))						AS Pressure
-,	CAST(JSON_VALUE(a.value,'$.cloudcover')/100	AS decimal(3,2)) 						AS CloudcoverPct
+,	CAST(JSON_VALUE(a.value,'$.cloudcover')/100.0	AS decimal(3,2)) 						AS CloudcoverPct
 FROM ods.wwoHistoricalWeather hw
 CROSS APPLY OPENJSON(hw.JsonData, '$.data.weather[0].hourly') a

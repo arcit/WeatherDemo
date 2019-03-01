@@ -1,0 +1,414 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1400,
+  "model": {
+    "culture": "pl-PL",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/ ;WeatherDemo",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": ".",
+            "database": "WeatherDemo"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "Username": "TabularReader",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Date",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "Day",
+            "dataType": "int64",
+            "sourceColumn": "Day"
+          },
+          {
+            "name": "Week",
+            "dataType": "int64",
+            "sourceColumn": "Week"
+          },
+          {
+            "name": "Weekday",
+            "dataType": "int64",
+            "sourceColumn": "Weekday"
+          },
+          {
+            "name": "Weekday Name",
+            "dataType": "string",
+            "sourceColumn": "WeekdayName",
+            "sortByColumn": "Weekday"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Quarter"
+          },
+          {
+            "name": "Quarter Name",
+            "dataType": "string",
+            "sourceColumn": "QuarterName"
+          },
+          {
+            "name": "Month Name",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sortByColumn": "Month"
+          },
+          {
+            "name": "Month Year",
+            "dataType": "string",
+            "sourceColumn": "MonthYear"
+          },
+          {
+            "name": "Month Date",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthDate"
+          },
+          {
+            "name": "Week Descrption",
+            "dataType": "string",
+            "sourceColumn": "WeekDescrption",
+            "sortByColumn": "Week"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;WeatherDemo\",",
+                "    dm_DimDate = Source{[Schema=\"dm\",Item=\"DimDate\"]}[Data]",
+                "in",
+                "    dm_DimDate"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Month Name",
+                "ordinal": 1,
+                "column": "Month Name"
+              },
+              {
+                "name": "Date",
+                "ordinal": 2,
+                "column": "Date"
+              }
+            ]
+          },
+          {
+            "name": "Week Hierarchy",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Week",
+                "ordinal": 1,
+                "column": "Week"
+              },
+              {
+                "name": "Weekday Name",
+                "ordinal": 2,
+                "column": "Weekday Name"
+              },
+              {
+                "name": "Date",
+                "ordinal": 3,
+                "column": "Date"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Location",
+        "columns": [
+          {
+            "name": "City",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "City",
+            "dataCategory": "City"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Country",
+            "dataCategory": "Country"
+          },
+          {
+            "name": "Latitude",
+            "dataType": "string",
+            "sourceColumn": "Latitude",
+            "dataCategory": "Latitude"
+          },
+          {
+            "name": "Longitude",
+            "dataType": "string",
+            "sourceColumn": "Longitude",
+            "dataCategory": "Longitude"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;WeatherDemo\",",
+                "    dm_DimLocation = Source{[Schema=\"dm\",Item=\"DimLocation\"]}[Data]",
+                "in",
+                "    dm_DimLocation"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Locations",
+            "levels": [
+              {
+                "name": "City",
+                "ordinal": 1,
+                "column": "City"
+              },
+              {
+                "name": "Country",
+                "ordinal": 0,
+                "column": "Country"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Historical Weather",
+        "columns": [
+          {
+            "name": "City",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Max Daily Temp",
+            "dataType": "double",
+            "sourceColumn": "MaxDailyTempC",
+            "summarizeBy": "max"
+          },
+          {
+            "name": "Min Daily Temp",
+            "dataType": "double",
+            "sourceColumn": "MinDailyTempC",
+            "summarizeBy": "min"
+          },
+          {
+            "name": "Total Snow Cm",
+            "dataType": "double",
+            "sourceColumn": "TotalSnowCm",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Sunny Hours",
+            "dataType": "double",
+            "sourceColumn": "SunnyHours",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Avg Daily UV Index",
+            "dataType": "double",
+            "sourceColumn": "AvgDailyUVIndex",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Time Of Observation",
+            "dataType": "string",
+            "sourceColumn": "TimeOfObservation"
+          },
+          {
+            "name": "Temprerature",
+            "dataType": "double",
+            "sourceColumn": "TempreratureC",
+            "displayFolder": "Temperature",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Feels Like",
+            "dataType": "double",
+            "sourceColumn": "FeelsLikeC",
+            "displayFolder": "Temperature",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Windspeed km/h",
+            "dataType": "double",
+            "sourceColumn": "WindspeedKmph",
+            "displayFolder": "Wind",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Wind Dir Degree",
+            "dataType": "double",
+            "sourceColumn": "WinddirDegree",
+            "displayFolder": "Wind",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Wind Dir 16Point",
+            "dataType": "string",
+            "sourceColumn": "Winddir16Point",
+            "displayFolder": "Wind"
+          },
+          {
+            "name": "Weather Icon Url",
+            "dataType": "string",
+            "sourceColumn": "WeatherIconUrl",
+            "dataCategory": "ImageUrl",
+            "isDefaultImage": true
+          },
+          {
+            "name": "Weather Description",
+            "dataType": "string",
+            "sourceColumn": "WeatherDescription"
+          },
+          {
+            "name": "Humidity",
+            "dataType": "double",
+            "sourceColumn": "Humidity",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Pressure",
+            "dataType": "double",
+            "sourceColumn": "Pressure",
+            "summarizeBy": "average"
+          },
+          {
+            "name": "Cloudcover Pct",
+            "dataType": "double",
+            "sourceColumn": "CloudcoverPct",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "summarizeBy": "average"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;WeatherDemo\",",
+                "    dm_FactHistoricalWeather = Source{[Schema=\"dm\",Item=\"FactHistoricalWeather\"]}[Data]",
+                "in",
+                "    dm_FactHistoricalWeather"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Temperature Monthly Avg",
+            "expression": " CALCULATE([Temperature Avg],ALLEXCEPT('Date','Date'[Month Date]))",
+            "formatString": "0.00",
+            "displayFolder": "Temperature"
+          },
+          {
+            "name": "Temperature Avg",
+            "expression": " AVERAGE('Historical Weather'[Temprerature])",
+            "formatString": "0.00",
+            "displayFolder": "Temperature"
+          },
+          {
+            "name": "Temperature Max",
+            "expression": " MAX('Historical Weather'[Temprerature])",
+            "formatString": "0.00",
+            "displayFolder": "Temperature"
+          },
+          {
+            "name": "Temperature Monthly Max",
+            "expression": "CALCULATE([Temperature Max],ALLEXCEPT('Date','Date'[Month Date]))",
+            "formatString": "0.00",
+            "displayFolder": "Temperature"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "f478938b-4396-4ff3-ac6b-87aac9513e93",
+        "fromTable": "Historical Weather",
+        "fromColumn": "Date",
+        "toTable": "Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "91c1f4ad-d960-4a9d-9dbc-9eab31603274",
+        "fromTable": "Historical Weather",
+        "fromColumn": "City",
+        "toTable": "Location",
+        "toColumn": "City"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "500"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
