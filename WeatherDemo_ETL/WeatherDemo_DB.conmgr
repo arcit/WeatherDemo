@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="WeatherDemo"
+  DTS:ObjectName="WeatherDemo_DB"
   DTS:DTSID="{7C197763-39DB-410A-BFD0-7A5790AD2C64}"
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>

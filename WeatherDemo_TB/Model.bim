@@ -362,7 +362,7 @@
         "measures": [
           {
             "name": "Temperature Monthly Avg",
-            "expression": " CALCULATE([Temperature Avg],ALLEXCEPT('Date','Date'[Month Date]))",
+            "expression": " CALCULATE([Temperature Avg],FILTER(ALL('Date'),'Date'[Month]=SELECTEDVALUE('Date'[Month],BLANK())))",
             "formatString": "0.00",
             "displayFolder": "Temperature"
           },
@@ -380,7 +380,7 @@
           },
           {
             "name": "Temperature Monthly Max",
-            "expression": "CALCULATE([Temperature Max],ALLEXCEPT('Date','Date'[Month Date]))",
+            "expression": "CALCULATE([Temperature Max],FILTER(ALL('Date'),'Date'[Month]=SELECTEDVALUE('Date'[Month],BLANK())))",
             "formatString": "0.00",
             "displayFolder": "Temperature"
           }

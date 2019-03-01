@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Load_wwoHistoricalWeather"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{3FD48A9B-9285-43E1-A26C-DFC080934E1A}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{36F6DDB4-7C76-4899-9117-F0A39FB08EC3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -63,7 +63,8 @@
       DTS:ObjectName="APIKey">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">afcded77a7e4446198c120431192802</DTS:Property>
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -103,7 +104,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="DownloadURL">
       <DTS:VariableValue
-        DTS:DataType="8">http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=afcded77a7e4446198c120431192802&amp;q=Warsaw&amp;format=json&amp;date=2018-01-01&amp;includelocation=yes&amp;tp=3</DTS:VariableValue>
+        DTS:DataType="8">http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=&amp;q=Warsaw&amp;format=json&amp;date=2018-01-01&amp;includelocation=yes&amp;tp=3</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -147,14 +148,35 @@
           Language="CSharp"
           ReadOnlyVariables="User::DownloadURL,User::ODSFilePath">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_35181d1176e447feb2ed5c909de5410f")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_35181d1176e447feb2ed5c909de5410f")]
+[assembly: AssemblyCopyright("Copyright @  2019")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -575,35 +597,14 @@ namespace ST_35181d1176e447feb2ed5c909de5410f.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_35181d1176e447feb2ed5c909de5410f")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_35181d1176e447feb2ed5c909de5410f")]
-[assembly: AssemblyCopyright("Copyright @  2019")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------

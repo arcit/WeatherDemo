@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Main"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{3593CCF7-9141-4EA5-B9FA-BDA405B2BBD7}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{89271F7C-A812-4DAB-9E4E-F2F759B9AABE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -95,6 +95,22 @@
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Analysis Services Processing Task"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{BBB83BA2-2012-4292-8830-E683B5ABD344}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Analysis Services Processing Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="WeatherDemo_TB"
+          ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;WeatherDemo&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load ODS"
       DTS:CreationName="STOCK:SEQUENCE"
@@ -274,7 +290,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Truncate Staging"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -309,7 +325,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="wwoHistoricalWeather_DatesToLoad"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -379,6 +395,16 @@
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{419213C3-66B6-4372-A1D2-9C2320792C93}"
+      DTS:From="Package\Load ODS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Analysis Services Processing Task" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -417,6 +443,10 @@
           Size="242,42"
           Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Get wwoHistoricalWeather_APIKey"
           TopLeft="441,22" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Load ODS"
+          TopLeft="211.5,444" />
         <NodeLayout
           Size="159,42"
           Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Truncate Staging"
@@ -531,10 +561,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Load ODS\Load ODS wwoHistoricalWeather\Load ODS"
-          TopLeft="211.5,444" />
         <EdgeLayout
           Id="Package\Load ODS\Load ODS wwoHistoricalWeather.PrecedenceConstraints[Constraint 3]"
           TopLeft="285,391.5">
@@ -647,10 +673,48 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1099,770"
-          Size="1099,813"
+          PanelSize="1099,745"
+          Size="1099,788"
           Id="Package\Load ODS"
           TopLeft="268,57" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Analysis Services Processing Task"
+          TopLeft="819,881" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="817.5,845">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120,36"
+              Start="0,0"
+              End="120,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="4,18" />
+                  <mssgle:LineSegment
+                    End="116,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="116,18"
+                    Point2="120,18"
+                    Point3="120,22" />
+                  <mssgle:LineSegment
+                    End="120,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
