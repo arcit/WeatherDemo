@@ -12,6 +12,7 @@ Solution is based on following components:
 * Sql Server database that is used for creating final data model - Data Mart
 * Sql Server Integration Services for whole loading and orchestration process
 * Sql Server Analysis Services for Tabular Model.
+* Sql Server Agent for SSIS schedule and execution.
 * Power BI Report
 
 Remarks - General:
